@@ -2,7 +2,7 @@
 
 var sinon = require('sinon');
 var expect = require('chai').expect;
-var ensureAuthentication = require('../lib/authentication');
+var ensureAuthentication = require('../').ensureAuthentication;
 
 describe('Authentication', function () {
 
