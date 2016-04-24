@@ -1,0 +1,16 @@
+{
+  "name": "passport-middleware",
+  "version": "1.0.0",
+  "description": "usefull middleware functions for working with passport.js",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://bitbucket.org/jscheffner/passport-middleware.git"
+  },
+  "author": "Jonas Scheffner",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/jscheffner/passport-middleware#readme"
+}
