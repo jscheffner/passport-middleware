@@ -22,17 +22,17 @@ describe('Authentication', function () {
         expect(res.status.called).to.equal(false);
         expect(res.end.called).to.equal(false);
     });
-    it('should call res.status(401).end() if req.isAuthenticated is false', function () {
+    it('should call res.sendStatus(401).end() if req.isAuthenticated is false', function () {
         var req, res, next, statusSpy;
         req = {
              isAuthenticated: sinon.stub().returns(false)
         };
         res = {};
-        res.status = function () {
+        res.sendStatus = function () {
             return this;
         };
         res.end = sinon.spy();
-        statusSpy = sinon.spy(res, 'status');
+        statusSpy = sinon.spy(res, 'sendStatus');
         next = sinon.spy();
         ensureAuthentication(req, res, next);
         expect(next.called).to.equal(false);

@@ -17,16 +17,16 @@ describe('authorization', function () {
         expect(res.status.called).to.equal(false);
         expect(res.end.called).to.equal(false);
     });
-    it('shoud call res.status(403).end() if user has none of the accepted roles', function() {
+    it('shoud call res.sendStatus(403).end() if user has none of the accepted roles', function() {
         var req, res, next, statusSpy;
         
         req = { user : { roles : ['reader', 'somestrangerole'] } }
         res = {};
-        res.status = function () {
+        res.sendStatus = function () {
             return this;
         };
         res.end = sinon.spy();
-        statusSpy = sinon.spy(res, 'status');
+        statusSpy = sinon.spy(res, 'sendStatus');
         next = sinon.spy();
         ensureAuthorization(req, res, next);
         expect(next.called).to.equal(false);
