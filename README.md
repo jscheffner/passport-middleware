@@ -1,6 +1,6 @@
 # passport-middleware#
 
-The module exported by this repository has two methods that you can use in combination with Passport.js:
+This module provides two methods that you can use in combination with Passport.js:
 
 **ensureAuthentication** is a middleware function that checks if the user is authenticated.
 
