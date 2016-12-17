@@ -1,24 +1,37 @@
-# passport-middleware#
+# passport-middleware #
 
-This module provides two methods that you can use in combination with Passport.js:
+## Usage ##
 
-**ensureAuthentication** is a middleware function that checks if the user is authenticated.
-
-**authorization** creates a middleware function that checks if the user has one of the accepted roles
-
-##Example usage:##
-```
-#!Node.js
-
-var ensureAuthentication = require('passport-middleware').ensureAuthentication;
-router.get('/', ensureAuthentication, someHandler);
-```
-This would cause a 401 status message if the user was not autenticated. If he is authenticated, it will call someHandler.
+First, you need to install the module:
 
 ```
-#!Node.js
-
-var authorization = require('passport-middleware).authorization;
-router.get('/', authorization(['author', 'reader']), someHandler);
+npm install passport-middleware
 ```
-This would cause a 403 status message if the user had none of the roles 'author' and 'reader'. If he has, someHandler will be called. This only works if the user has some property named 'roles' which is an array of strings.
+
+Now you have to import it:
+```
+var passportMiddleware = require('passport-middleware);
+```
+
+Let's make sure, only logged in users can access your endpoint:
+
+```
+router.get('/', passportMiddleware.ensureAuthentication, someHandler);
+```
+Now, a user who isn't logged in will get a 401 status message.
+
+You might also want to prevent people from accessing your ressource if they don't have the appropriate role:
+
+```
+router.get('/', passportMiddleware.authorization(['author', 'reader']), someHandler);
+```
+
+Now, a user with none of the roles 'author' or 'reader' will get a 403 status message. If you want to use this function, your user has to have a property named 'roles' which is an array of strings.
+
+## ISC Licence ##
+
+Copyright (c) 2016, Jonas Scheffner
+
+Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
