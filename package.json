@@ -8,11 +8,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://bitbucket.org/jscheffner/passport-middleware.git"
+    "url": "git@github.com:joshmallow/passport-middleware.git"
   },
   "author": "Jonas Scheffner",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/jscheffner/passport-middleware#readme",
+  "homepage": "https://github.com/joshmallow/passport-middleware#passport-middleware",
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^2.4.5",
