@@ -20,5 +20,9 @@
   },
   "dependencies": {
     "underscore": "^1.8.3"
+  },
+  "keywords": ["express", "passport", "auth", "authentication", "authorization", "middleware"],
+  "engines": {
+    "node": ">= 4.0.0"
   }
 }
