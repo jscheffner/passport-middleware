@@ -1,6 +1,8 @@
-# passport-middleware #
+[![Build Status](https://travis-ci.org/joshmallow/passport-middleware.svg?branch=master)](https://travis-ci.org/joshmallow/passport-middleware)
 
-## Usage ##
+# passport-middleware
+
+## Usage
 
 First, you need to install the module:
 
@@ -28,7 +30,7 @@ router.get('/', passportMiddleware.authorization(['author', 'reader']), someHand
 
 Now, a user with none of the roles 'author' or 'reader' will get a 403 status message. If you want to use this function, your user has to have a property named 'roles' which is an array of strings.
 
-## ISC Licence ##
+## ISC Licence
 
 Copyright (c) 2016, Jonas Scheffner
 
