@@ -4,7 +4,8 @@
   "description": "usefull middleware functions for working with passport.js",
   "main": "lib/index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "repository": {
     "type": "git",
@@ -15,7 +16,10 @@
   "homepage": "https://github.com/joshmallow/passport-middleware#passport-middleware",
   "devDependencies": {
     "chai": "^3.5.0",
+    "coveralls": "^2.13.0",
+    "istanbul": "^0.4.5",
     "mocha": "^2.4.5",
+    "mocha-lcov-reporter": "^1.3.0",
     "sinon": "^1.17.3"
   },
   "dependencies": {
