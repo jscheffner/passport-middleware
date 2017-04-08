@@ -2,7 +2,7 @@
 
 const sinon = require('sinon');
 const expect = require('chai').expect;
-const { ensureAuthentication } = require('../');
+const ensureAuthentication = require('../').ensureAuthentication;
 
 describe('Authentication', function () {
 
