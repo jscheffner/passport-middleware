@@ -1,6 +1,6 @@
 {
   "name": "passport-middleware",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "usefull middleware functions for working with passport.js",
   "main": "lib/index.js",
   "scripts": {
@@ -21,7 +21,14 @@
   "dependencies": {
     "underscore": "^1.8.3"
   },
-  "keywords": ["express", "passport", "auth", "authentication", "authorization", "middleware"],
+  "keywords": [
+    "express",
+    "passport",
+    "auth",
+    "authentication",
+    "authorization",
+    "middleware"
+  ],
   "engines": {
     "node": ">= 4.0.0"
   }
