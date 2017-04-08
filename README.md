@@ -10,22 +10,22 @@ First, you need to install the module:
 npm install passport-middleware
 ```
 
-Now you have to import it:
+Now you have to import the functions:
 ```
-var passportMiddleware = require('passport-middleware);
+const {ensureAuthentication, authorization} = require('passport-middleware);
 ```
 
 Let's make sure, only logged in users can access your endpoint:
 
 ```
-router.get('/', passportMiddleware.ensureAuthentication, someHandler);
+router.get('/', ensureAuthentication, (req, res) => res.send('Hello, World!');
 ```
 Now, a user who isn't logged in will get a 401 status message.
 
 You might also want to prevent people from accessing your ressource if they don't have the appropriate role:
 
 ```
-router.get('/', passportMiddleware.authorization(['author', 'reader']), someHandler);
+router.get('/', authorization(['author', 'reader']), (req. res) => res.send('Hello, World!');
 ```
 
 Now, a user with none of the roles 'author' or 'reader' will get a 403 status message. If you want to use this function, your user has to have a property named 'roles' which is an array of strings.

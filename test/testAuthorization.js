@@ -1,36 +1,32 @@
-﻿var expect = require('chai').expect;
-var sinon = require('sinon');
-var ensureAuthorization = require('../').authorization(['admin', 'author']);
+﻿const expect = require('chai').expect;
+const sinon = require('sinon');
+const ensureAuthorization = require('../').authorization(['admin', 'author']);
 
 describe('authorization', function () {
     it('should call next if user has one of the accepted roles', function () {
-        var req, res, next;
-
-        req = { user : { roles : ['reader', 'author'] } }
-        res = {
+        const req = { user : { roles : ['reader', 'author'] } };
+        const res = {
             status: sinon.spy(),
             end: sinon.spy()
         };
-        next = sinon.spy();
+        const next = sinon.spy();
         ensureAuthorization(req, res, next);
         expect(next.called).to.equal(true);
         expect(res.status.called).to.equal(false);
         expect(res.end.called).to.equal(false);
     });
-    it('shoud call res.sendStatus(403).end() if user has none of the accepted roles', function() {
-        var req, res, next, statusSpy;
-        
-        req = { user : { roles : ['reader', 'somestrangerole'] } }
-        res = {};
+    it('should call res.sendStatus(403).end() if user has none of the accepted roles', function() {
+        const req = { user : { roles : ['reader', 'somestrangerole'] } };
+        const res = {};
         res.sendStatus = function () {
             return this;
         };
         res.end = sinon.spy();
-        statusSpy = sinon.spy(res, 'sendStatus');
-        next = sinon.spy();
+        const statusSpy = sinon.spy(res, 'sendStatus');
+        const next = sinon.spy();
         ensureAuthorization(req, res, next);
         expect(next.called).to.equal(false);
         expect(statusSpy.calledWith(403)).to.equal(true);
         expect(res.end.called).to.equal(true);
     });
-})
+});

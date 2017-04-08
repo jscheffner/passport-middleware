@@ -1,21 +1,20 @@
 ﻿"use strict";
 
-var sinon = require('sinon');
-var expect = require('chai').expect;
-var ensureAuthentication = require('../').ensureAuthentication;
+const sinon = require('sinon');
+const expect = require('chai').expect;
+const { ensureAuthentication } = require('../');
 
 describe('Authentication', function () {
 
     it('should call next if req.isAuthenticated is true', function () {
-        var req, res, next;
-        req = {
+        const req = {
             isAuthenticated: sinon.stub().returns(true)
         };
-        res = {
+        const res = {
             status: sinon.spy(),
             end: sinon.spy()
         };
-        next = sinon.spy();
+        const next = sinon.spy();
             
         ensureAuthentication(req, {}, next);
         expect(next.called).to.equal(true);
@@ -23,17 +22,15 @@ describe('Authentication', function () {
         expect(res.end.called).to.equal(false);
     });
     it('should call res.sendStatus(401).end() if req.isAuthenticated is false', function () {
-        var req, res, next, statusSpy;
-        req = {
+        const req = {
              isAuthenticated: sinon.stub().returns(false)
         };
-        res = {};
-        res.sendStatus = function () {
-            return this;
+        const res = {
+            sendStatus: () => res,
+            end: sinon.spy()
         };
-        res.end = sinon.spy();
-        statusSpy = sinon.spy(res, 'sendStatus');
-        next = sinon.spy();
+        const statusSpy = sinon.spy(res, 'sendStatus');
+        const next = sinon.spy();
         ensureAuthentication(req, res, next);
         expect(next.called).to.equal(false);
         expect(statusSpy.calledWith(401)).to.equal(true);
