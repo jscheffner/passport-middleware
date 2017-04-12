@@ -1,6 +1,6 @@
 {
   "name": "passport-middleware",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "usefull middleware functions for working with passport.js",
   "main": "lib/index.js",
   "scripts": {
