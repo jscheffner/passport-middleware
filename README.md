@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/jscheffner/passport-middleware.svg?branch=master)](https://travis-ci.org/jscheffner/passport-middleware) [![Coverage Status](https://coveralls.io/repos/github/jscheffner/passport-middleware/badge.svg?branch=master)](https://coveralls.io/github/jscheffner/passport-middleware?branch=master)
+[![Build Status](https://travis-ci.org/jscheffner/passport-middleware.svg?branch=master)](https://travis-ci.org/jscheffner/passport-middleware) [![Coverage Status](https://coveralls.io/repos/github/jscheffner/passport-middleware/badge.svg?branch=master)](https://coveralls.io/github/jscheffner/passport-middleware?branch=master) [![node](https://img.shields.io/node/v/passport-middleware.svg)]() [![license](https://img.shields.io/npm/l/passport-middleware.svg)](https://github.com/jscheffner/passport-middleware#isc-licence)
 # passport-middleware
 
 ## Usage
@@ -17,14 +17,14 @@ const {ensureAuthentication, authorization} = require('passport-middleware);
 Let's make sure, only logged in users can access your endpoint:
 
 ```
-router.get('/', ensureAuthentication, (req, res) => res.send('Hello, World!');
+router.get('/', ensureAuthentication, (req, res) => res.send('Hello, World!'));
 ```
 Now, a user who isn't logged in will get a 401 status message.
 
-You might also want to prevent people from accessing your ressource if they don't have the appropriate role:
+You might also want to prevent people from accessing your resource if they don't have the appropriate role:
 
 ```
-router.get('/', authorization(['author', 'reader']), (req. res) => res.send('Hello, World!');
+router.get('/', authorization(['author', 'reader']), (req. res) => res.send('Hello, World!'));
 ```
 
 Now, a user with none of the roles 'author' or 'reader' will get a 403 status message. If you want to use this function, your user has to have a property named 'roles' which is an array of strings.
